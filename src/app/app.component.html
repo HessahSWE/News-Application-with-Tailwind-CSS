@@ -1,8 +1,18 @@
 <p>
-  <mat-toolbar>
+  <mat-toolbar color="primary">
+    <button mat-icon-button class="example-icon">
+      <mat-icon class="mat-18">menu</mat-icon>
+      <mat-icon class="mat-18">close</mat-icon>
+    </button>
     <span>My Application</span>
   </mat-toolbar>
 </p>
-<h1 class="text-3xl font-bold underline">
-  Hello world! 
-</h1>
+<mat-sidenav-container>
+  <mat-sidenav #sideNav="matSideNav"><img src="" alt="" class="avatar mat-elevation z8">
+    <h4>
+      Let's Program </h4>
+    <mat-divider></mat-divider><button mat-button class="menu-button">
+      <mat-icon>event_note</mat-icon><span>ABC NEWS</span>
+    </button>
+  </mat-sidenav>
+</mat-sidenav-container>
