@@ -13,6 +13,7 @@ export class AppComponent implements AfterViewInit, OnInit {
   @ViewChild(MatSidenav) sideNav!: MatSidenav;
   sources: any = [];
   articles: any = [];
+  selectedNewsChannel: string = 'Top 10 Trending News!';
   constructor(private observer: BreakpointObserver, private cdr: ChangeDetectorRef, private newsApi: ServiceService) {
   }
   ngOnInit(): void {
@@ -38,5 +39,11 @@ export class AppComponent implements AfterViewInit, OnInit {
       }
     });
     this.cdr.detectChanges();
+  }
+  searchSource(source: any) {
+    this.newsApi.getArticlesById(source.id).subscribe((res: any) => {
+      this.articles = res.articles;
+      this.selectedNewsChannel = source.name;
+    });
   }
 }

@@ -11,7 +11,7 @@
     <h4>
       Let's Read </h4>
     <mat-divider></mat-divider>
-    <ng-container *ngFor="let source of sources"> <button mat-button class="menu-button">
+    <ng-container *ngFor="let source of sources"> <button mat-button (click)="searchSource(source)" class="menu-button">
         <mat-icon>event_note</mat-icon><span>{{source.name }}</span>
       </button></ng-container>
   </mat-sidenav>
@@ -20,7 +20,7 @@
       <div class="container px-5 mx-auto mx-w-7x1">
         <div class="flex flex-wrap w-full mb-4 p-4">
           <div class="w-full mb-6 lg:mb-0">
-            <h1 class="sm:text-4xl text-5xl font-medium itle-font mb-2 text-gray-900">hhhhhhhhhhhh</h1>
+            <h1 class="sm:text-4xl text-5xl font-medium itle-font mb-2 text-gray-900">{{selectedNewsChannel}}</h1>
             <div class="h-1 w-60 bg-indigo-500 rounded">
             </div>
           </div>
