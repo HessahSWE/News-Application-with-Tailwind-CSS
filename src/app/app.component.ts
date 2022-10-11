@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Injectable, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { BreakpointObserver } from '@angular/cdk/layout';
 @Component({
@@ -10,7 +10,7 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 export class AppComponent implements AfterViewInit {
   title = 'News-Application-with-Tailwind-CSS';
   @ViewChild(MatSidenav) sideNav!: MatSidenav;
-  constructor(private observer: BreakpointObserver) {
+  constructor(private observer: BreakpointObserver, private cdr:ChangeDetectorRef) {
 
   }
 
@@ -25,5 +25,6 @@ export class AppComponent implements AfterViewInit {
         this.sideNav.open();
       }
     });
+    this.cdr.detectChanges();
   }
 }
