@@ -11,11 +11,13 @@ export class AppComponent implements AfterViewInit {
   title = 'News-Application-with-Tailwind-CSS';
   @ViewChild(MatSidenav) sideNav!: MatSidenav;
   constructor(private observer: BreakpointObserver) {
+  
   }
+
   ngAfterViewInit(): void {
     this.sideNav.opened = true;
     this.observer.observe(['(max-width :787px)']).subscribe((res) => {
-      if (res?.matches) {
+      if (res.matches) {
         this.sideNav.mode = 'over';
         this.sideNav.close();
       } else {
