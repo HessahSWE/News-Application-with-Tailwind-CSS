@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, Injectable, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 
 @Component({
@@ -6,6 +6,7 @@ import { MatSidenav } from '@angular/material/sidenav';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+@Injectable()
 export class AppComponent implements AfterViewInit {
   title = 'News-Application-with-Tailwind-CSS';
   @ViewChild(MatSidenav) sideNav!: MatSidenav;
