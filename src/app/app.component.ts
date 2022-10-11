@@ -1,17 +1,29 @@
-import { AfterViewInit, ChangeDetectorRef, Component, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { BreakpointObserver } from '@angular/cdk/layout';
+import { ServiceService } from './service/service.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 
-export class AppComponent implements AfterViewInit {
+export class AppComponent implements AfterViewInit, OnInit {
   title = 'News-Application-with-Tailwind-CSS';
   @ViewChild(MatSidenav) sideNav!: MatSidenav;
-  constructor(private observer: BreakpointObserver, private cdr:ChangeDetectorRef) {
-
+  sources: any = [];
+  articles: any = [];
+  constructor(private observer: BreakpointObserver, private cdr: ChangeDetectorRef, private newsApi: ServiceService) {
+  }
+  ngOnInit(): void {
+    this.newsApi.initArticles().subscribe((res: any) => {
+      console.log(res);
+      this.articles = res.articles;
+    });
+    this.newsApi.initSources().subscribe((res: any) => {
+      console.log(res);
+      this.sources = res.sources;
+    });
   }
 
   ngAfterViewInit(): void {

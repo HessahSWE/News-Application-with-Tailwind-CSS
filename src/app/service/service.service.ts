@@ -9,14 +9,13 @@ export class ServiceService {
 
   constructor(private http: HttpClient) { }
   initSources() {
-    return this.http.get("" + this.api_key);
+    return this.http.get("https://newsapi.org/v2/sources?language=en&apikey=" + this.api_key);
   }
   getArticlesById(source: string) {
-    return this.http.get("" + source + '&apiKey=' + this.api_key);
+    return this.http.get("https://newsapi.org/v2/top-headlines?sources=" + source + '&apiKey=' + this.api_key);
   }
   initArticles() {
-    return this.http.get("" + this.api_key);
-
+    return this.http.get("https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=" + this.api_key);
   }
 }
 
