@@ -8,7 +8,7 @@ import { ServiceService } from './service/service.service';
   styleUrls: ['./app.component.css']
 })
 
-export class AppComponent implements AfterViewInit, OnInit {
+export class AppComponent implements  OnInit {
   title = 'News-Application-with-Tailwind-CSS';
   @ViewChild(MatSidenav) sideNav!: MatSidenav;
   sources: any = [];
@@ -27,20 +27,21 @@ export class AppComponent implements AfterViewInit, OnInit {
     });
   }
 
-  ngAfterViewInit(): void {
-    this.sideNav.opened = true;
-    this.observer.observe(['(max-width :787px)']).subscribe((res) => {
-      if (res?.matches) {
-        this.sideNav.mode = 'over';
-        this.sideNav.close();
-      } else {
-        this.sideNav.mode = 'side';
-        this.sideNav.open();
-      }
-    });
-    this.cdr.detectChanges();
-  }
+  // ngAfterViewInit(): void {
+  //   this.sideNav.opened = true;
+  //   this.observer.observe(['(max-width :787px)']).subscribe((res) => {
+  //     if (res?.matches) {
+  //       this.sideNav.mode = 'over';
+  //       this.sideNav.close();
+  //     } else {
+  //       this.sideNav.mode = 'side';
+  //       this.sideNav.close();
+  //     }
+  //   });
+  //   this.cdr.detectChanges();
+  // }
   searchSource(source: any) {
+    this.sideNav.close();
     this.newsApi.getArticlesById(source.id).subscribe((res: any) => {
       this.articles = res.articles;
       this.selectedNewsChannel = source.name;
