@@ -8,7 +8,7 @@ import { ServiceService } from './service/service.service';
   styleUrls: ['./app.component.css']
 })
 
-export class AppComponent implements  OnInit {
+export class AppComponent implements OnInit {
   title = 'News-Application-with-Tailwind-CSS';
   @ViewChild(MatSidenav) sideNav!: MatSidenav;
   sources: any = [];
